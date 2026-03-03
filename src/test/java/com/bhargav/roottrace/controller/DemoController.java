@@ -13,7 +13,10 @@ public class DemoController {
         String value = null;
         return  value.toString();
     }
-
+    @GetMapping("/divide-error")
+    public int divideError(){
+         return 10/0;
+    }
 
 
 }
