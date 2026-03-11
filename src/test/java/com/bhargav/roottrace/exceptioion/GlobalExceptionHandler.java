@@ -1,6 +1,7 @@
 package com.bhargav.roottrace.exceptioion;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,6 @@ public class GlobalExceptionHandler {
         System.out.println("Message: " + ex.getMessage());
         System.out.println("Time: " + LocalDateTime.now());
 
+        return new ResponseEntity<>("Error captured by RootTrace", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
