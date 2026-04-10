@@ -29,7 +29,7 @@ public class ErrorMonitorProperties {
         return serverUrl;
     }
 
-    public void setServerUrl(String serverUrl) {
-        this.serverUrl = serverUrl;
-    }
+//    public void setServerUrl(String serverUrl) {
+//        this.serverUrl = serverUrl;
+//    }
 }
