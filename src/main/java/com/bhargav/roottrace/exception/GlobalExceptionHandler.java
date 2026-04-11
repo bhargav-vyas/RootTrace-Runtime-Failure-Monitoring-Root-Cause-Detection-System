@@ -28,10 +28,10 @@ public class GlobalExceptionHandler {
          dto.setTimestamp(LocalDateTime.now());
          sender.sendError(dto);
 }
-//private String getStackTrace(Exception ex){
-//    StringWriter sw= new StringWriter();
-//    ex.printStackTrace(new PrintWriter(sw));
-//    return sw.toString();
-//    }
+private String getStackTrace(Exception ex){
+    StringWriter sw= new StringWriter();
+    ex.printStackTrace(new PrintWriter(sw));
+    return sw.toString();
+    }
 }
 
