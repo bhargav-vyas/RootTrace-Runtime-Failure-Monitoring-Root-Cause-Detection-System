@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
 }
 private String getStackTrace(Exception ex){
     StringWriter sw= new StringWriter();
-//    ex.printStackTrace(new PrintWriter(sw));
+    ex.printStackTrace(new PrintWriter(sw));
     return sw.toString();
     }
 }
