@@ -1,4 +1,5 @@
 package com.bhargav.roottrace.entity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 
@@ -17,7 +18,8 @@ public class ErrorLog {
     private Long  id;
     private String exceptionType;
     private String message;
-    private  String  stackTeace;
+    @Column(name = "stack_trace", columnDefinition = "TEXT")
+    private String stackTrace;
     private String requestUrl;
     private String httpMethod;
     private String status ="OPEN";
@@ -35,8 +37,8 @@ public class ErrorLog {
         this.message = message;
     }
 
-    public void setStackTeace(String stackTeace) {
-        this.stackTeace = stackTeace;
+    public void setStackTrace(String stackTrace) {
+        this.stackTrace = stackTrace;
     }
 
     public void setRequestUrl(String requestUrl) {
@@ -68,7 +70,7 @@ public class ErrorLog {
     }
 
     public String getStackTeace() {
-        return stackTeace;
+        return stackTrace;
     }
 
     public String getRequestUrl() {

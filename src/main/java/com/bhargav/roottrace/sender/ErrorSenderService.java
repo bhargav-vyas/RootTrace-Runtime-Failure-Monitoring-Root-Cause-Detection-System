@@ -28,7 +28,7 @@ public class ErrorSenderService {
 
         log.setExceptionType(dto.getException());
         log.setMessage(dto.getMessage());
-        log.setStackTeace(dto.getStackTrace());
+        log.setStackTrace(dto.getStackTrace());
         log.setRequestUrl(dto.getRequestUrl());
         log.setHttpMethod(dto.getHttpMethod());
 
