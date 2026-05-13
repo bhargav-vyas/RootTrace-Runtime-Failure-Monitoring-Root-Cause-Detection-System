@@ -20,4 +20,19 @@ public class ErrorLogService {
     public List<ErrorLog> getAll() {
         return repository.findAll();
     }
+
+    public  ErrorLog getErrorById(Long id){
+        return repository.findById(id).orElse(null);
+
+    }
+    public void  deletById(Long id){
+        repository.deleteById(id);
+    }
+    public List<ErrorLog> getByExceptionType(String type) {
+        return repository.findByExceptionType(type);
+
+    }
+    public long getTotalErrors(){
+        return  repository.count();
+    }
 }

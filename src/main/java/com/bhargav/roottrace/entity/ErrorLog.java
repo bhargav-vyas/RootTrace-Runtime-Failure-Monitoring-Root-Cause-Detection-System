@@ -69,7 +69,7 @@ public class ErrorLog {
         return message;
     }
 
-    public String getStackTeace() {
+    public String getStackTrace() {
         return stackTrace;
     }
 
