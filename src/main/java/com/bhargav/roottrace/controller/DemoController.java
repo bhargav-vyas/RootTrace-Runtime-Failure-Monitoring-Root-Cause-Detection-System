@@ -17,6 +17,13 @@ public class DemoController {
     public int divideError(){
          return 10/0;
     }
+    @GetMapping("/test-error")
+    public String testError() {
+
+        String value = null;
+
+        return value.toString();
+    }
 
 
 }

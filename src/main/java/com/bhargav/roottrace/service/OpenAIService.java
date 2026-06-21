@@ -49,7 +49,7 @@ public class OpenAIService {
 
             request.put("temperature",0.3);
 
-            String response = webClient.post()
+            Map response = webClient.post()
                     .uri("https://api.openai.com/v1/chat/completions")
                     .header(
                             HttpHeaders.AUTHORIZATION,
@@ -58,13 +58,25 @@ public class OpenAIService {
                     .contentType(MediaType.APPLICATION_JSON)
                     .bodyValue(request)
                     .retrieve()
-                    .bodyToMono(String.class)
+                    .bodyToMono(Map.class)
                     .block();
 
-            System.out.println("OPENAI RESPONSE:");
-            System.out.println(response);
+            List<Map<String,Object>> choices =
+                    (List<Map<String,Object>>) response.get("choices");
 
-            return response;
+            Map<String,Object> firstChoice =
+                    choices.get(0);
+
+            Map<String,Object> message =
+                    (Map<String,Object>) firstChoice.get("message");
+
+            String aiContent =
+                    message.get("content").toString();
+
+            System.out.println("AI ANALYSIS:");
+            System.out.println(aiContent);
+
+            return aiContent;
 
         } catch(Exception e){
 
