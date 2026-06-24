@@ -35,4 +35,13 @@ public class ErrorLogService {
     public long getTotalErrors(){
         return  repository.count();
     }
+    public ErrorLog markResolved(Long id) {
+
+        ErrorLog error = repository.findById(id)
+                .orElseThrow();
+
+        error.setStatus("RESOLVED");
+
+        return repository.save(error);
+    }
 }
