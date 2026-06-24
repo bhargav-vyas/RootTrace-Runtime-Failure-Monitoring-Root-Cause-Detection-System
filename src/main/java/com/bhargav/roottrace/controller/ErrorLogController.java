@@ -41,4 +41,8 @@ public class ErrorLogController {
         return stats;
 
     }
+    @PutMapping("/{id}/resolve")
+    public ErrorLog resolveError(@PathVariable Long id) {
+        return service.markResolved(id);
+    }
 }

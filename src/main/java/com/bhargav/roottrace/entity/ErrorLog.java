@@ -20,6 +20,7 @@ public class ErrorLog {
     private String message;
     @Column(name = "stack_trace", columnDefinition = "TEXT")
     private String stackTrace;
+    private String severity = "MEDIUM";
     private String requestUrl;
     private String httpMethod;
     private String status ="OPEN";
@@ -39,6 +40,9 @@ public class ErrorLog {
 
     public void setStackTrace(String stackTrace) {
         this.stackTrace = stackTrace;
+    }
+    public void setSeverity(String severity) {
+        this.severity = severity;
     }
 
     public void setRequestUrl(String requestUrl) {
@@ -72,7 +76,9 @@ public class ErrorLog {
     public String getStackTrace() {
         return stackTrace;
     }
-
+    public String getSeverity() {
+        return severity;
+    }
     public String getRequestUrl() {
         return requestUrl;
     }
