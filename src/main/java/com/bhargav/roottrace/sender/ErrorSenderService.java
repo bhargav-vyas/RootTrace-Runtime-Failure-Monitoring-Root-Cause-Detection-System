@@ -12,13 +12,13 @@ public class ErrorSenderService {
 
     private final ErrorMonitorProperties properties;
     private final ErrorLogService service;
-    private final EmailService emailService;
 
-    public ErrorSenderService(ErrorMonitorProperties properties,
-                              ErrorLogService service, EmailService emailService) {
+    public ErrorSenderService(
+            ErrorMonitorProperties properties,
+            ErrorLogService service) {
+
         this.properties = properties;
         this.service = service;
-        this.emailService = emailService;
     }
 
     public void sendError(ErrorEventDTO dto) {
@@ -34,29 +34,11 @@ public class ErrorSenderService {
         log.setStackTrace(dto.getStackTrace());
         log.setRequestUrl(dto.getRequestUrl());
         log.setHttpMethod(dto.getHttpMethod());
-//        if (dto.getException().contains("NullPointerException")) {
-//            log.setSeverity("HIGH");
-//        } else if (dto.getException().contains("ArithmeticException")) {
-//            log.setSeverity("MEDIUM");
-//        } else if (dto.getException().contains("OutOfMemoryError")) {
-//            log.setSeverity("CRITICAL");
-//        } else {
-//            log.setSeverity("LOW");
-//        }
-        log.setSeverity("CRITICAL");
-        if ("CRITICAL".equals(log.getSeverity())) {
 
-            emailService.sendCriticalAlert(
-                    "Critical Error Detected\n\n" +
-                            "Exception: " + log.getExceptionType() + "\n\n" +
-                            "Message: " + log.getMessage()
-            );
-        }
+        log.setSeverity("CRITICAL");
 
         service.save(log);
 
         System.out.println("Saved error in database");
     }
 }
-
-
